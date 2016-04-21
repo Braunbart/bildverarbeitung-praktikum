@@ -13,7 +13,6 @@
 
 ;(show-image orig "Das neue Bild")
 
-; TODO: Manual angabe schreiben, dass auf mattem farbigem hintergrund zu fotografieren ist
 (define work_img (image->blue img))
 (define threshhold 150.0) ; TODO: als paramter oder coole function für automatisch finden
 (show-image (image-map (lambda (x) (if (> x threshhold) 255.0 0.0)) work_img))
