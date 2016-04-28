@@ -14,9 +14,10 @@
 ;(show-image orig "Das neue Bild")
 
 (define work_img (image->blue img))
-(define threshhold 150.0) ; TODO: als paramter oder coole function für automatisch finden
-(show-image (image-map (lambda (x) (if (> x threshhold) 255.0 0.0)) work_img))
+;(define threshhold 150.0) ; TODO: als paramter oder coole function für automatisch finden
+;(show-image (image-map (lambda (x) (if (> x threshhold) 255.0 0.0)) work_img))
 
+(show-image (cannyedgeimage work_img 1.0 0.0 255.0))
 
 
 ;Spielfeld erkennen
