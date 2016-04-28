@@ -1,0 +1,41 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Pflichtenheft - Malefiz}
+\author{Till Schander (6682565), Nils Heine (6703759)}
+\date{28.04.2016}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Einleitung}
+Dieses Dokument ist das Pflichtenheft für eine Software, die im Rahmen des Praktikums Bildverarbeitung an der Uni Hamburg im Sommersemester 2016 entwickelt wurde. 
+Die Software ermöglicht es das Spiel Malefiz von Ravensburger digital weiterzuspielen. Dafür muss das Spielfeld abfotografiert werden. Mehr zu der Funktion der Software findet sich im Abschnitt Leistungsumfang. Im Abschnitt Rahmenbedingungen wird genauer erläutert, was der Nutzer der Software zu beachten hat.
+
+
+
+\section{Leistungsumfang}
+
+\subsection{Spielfeld erkennen}
+Zuerst muss das Spielfeld von der Software erkannt werden. Dazu muss die äußere Kante des Spielbretts gefunden werden. Da das Spielbrett vermutlich nicht perfekt gerade fotografiert wurde, muss es anschließend gedreht werden. Auf das Drehen des Spielfeldes folgt ein Ausschneiden, sodass die im folgenden bearbeitete Fläche immer gleich Dimensionen besitzt. Da das Spielfeld ein Quadrat ist, kann nach diesem Prozess nicht gewährleistet werden, dass die obere Kante des Spielfelds immer oben liegt. Dies muss in einem zusätzlichen Schritt sichergestellt werden.
+
+\subsection{Spielstand erkennen}
+Nachdem das Spielfeld durch Drehen und Zuschneiden in eine einheitliche Re- präsentation gebracht wurde, kann nun der aktuelle Spielstand erkannt werden. Zuerst wird dafür eine Datenstruktur definiert, die den aktuellen Spielstand abbildet. Anschließend können alle Felder Schritt für Schritt durchgegangen und deren Zustand in der Datenstruktur gespeichert werden. Anhand von vorher definierten Bedingungen kann sichergestellt werden, dass nicht mehr Steine gefunden werden als es eigentlich geben darf.
+
+\subsection{Spielstand darstellen}
+Auf die Bilderkennung folgt die Bildgenerierung. Das Spielfeld wird als Hintergrund gezeichnet. Darauf werden die einzelnen Spielsteine gezeichnet. Das geschieht jeweils an der Position, auf der sie im vorherigen Schritt erkannt wurden.
+
+\subsection{Spielbar machen}
+Damit das Spiel anschließend auch weitergespielt werden kann, muss zuerst der aktuelle Spieler bestimmt werden. Dies kann nicht aus dem abfotografierten Spielfeld erkannt werden, weswegen der Nutzer mittels Prompt gefragt wird. Spielsteine in Malefiz werden nach aktuellen gewürfelten Augen gesetzt. Daher wird auch eine Würfelfunktion benötigt. Um zu verhindern, dass Spieler ihre Figur an ungültige Positionen setzen, müssen Regeln definiert werden und bei jedem Spielzug abgefragt werden. Beim Setzen der Figuren müssen auch die Interaktionen "Spielfigur rausschmeißen" und "Interaktion mit Barrieren" möglich sein. Abschließend muss das Programm erkennen, ob ein Spieler gewonnen hat.
+
+
+
+\section{Rahmenbedingungen}
+Damit das Programm erfolgreich läuft, müssen mehrere Rahmenbedingungen von den Nutzern befolgt werden. Zuerst setzen wir als Spielfeld die Variante von Ravensburger aus dem Jahr 2005 voraus (oder identisch aussehende). Dabei müssen Originalfiguren verwendet werden. Die Fotos von dem Spielfeld müssen in einem 90-Grad-Winkel, also direkt von oben, fotografiert werden. Dabei muss das Spielfeld auf einem mattem, einfarbigen Hintergrund liegen (nicht weiß). Es muss außerdem vollständig auf dem Foto sein und sollte mindestens 600 * 600 Pixel einnehmen.
+
+
+
+\end{document}
