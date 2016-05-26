@@ -105,7 +105,7 @@
 ;(save-image canny_crop2 "/Volumes/students/home/4schande/Bildverarbeitung/Zugeschnitten.png")
 
 ;----Felder durchgehen (Prozentual)----
-(define spielfeld (vector '('(9) 'goal)
+(define spielfeld (vector '('(9) 'goal '(49.83 6))
                           
                           '('(2 18) 'black '(6.5 11.63)) '('(1 3) 'black '(12 11.63)) '('(2 4) 'black '(17.3 11.63)) '('(3 5) 'black '(22.7 11.63))
                           '('(4 6) 'black '(28 11.63)) '('(5 7) 'black '(33.5 11.63)) '('(6 8) 'black '(38.9 11.63)) '('(7 9) 'black '(44.3 11.63))
@@ -169,3 +169,22 @@
                           '('(109) 'start_blue '(82.2 82.69)) '('(109) 'start_blue '(76 87.23)) '('(109) 'start_blue '(89 87.23))
                           '('(109) 'start_blue  '(78.5 95.1)) '('(109) 'start_blue '(86.5 95.1))
                           ))
+
+;Vektor der Aktuellen Spielzustand repräsentiert
+(define spielstand (make-vector 132 'empty))
+
+(define (prozentZuPixel prozentlist)
+  (list (inexact->exact (round (* (/(car prozentlist)100) (image-width canny_crop2))))
+        (inexact->exact (round (* (/(cadr prozentlist)100) (image-height canny_crop2))))))
+
+;Errechnet Durchschnittliche Farbe um Pixelkoordinate (+/- 5)
+(define (getFeldColor pixellist)
+  (map (lambda (x) (/ x 121))
+       (image-reduce + (subimage canny_crop2
+                                 (- (car pixellist) 5)
+                                 (- (cadr pixellist) 5)
+                                 (+ (car pixellist) 6)
+                                 (+ (cadr pixellist) 6)) 0)))
+
+(define (getFeldzustand feldnummer)
+  (getFeldColor (prozentZuPixel (cadr (caddr (vector-ref spielfeld feldnummer))))))
